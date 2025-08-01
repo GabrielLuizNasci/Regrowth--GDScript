@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ArrowItemResource" load_steps=3 format=3 uid="uid://dwbno6010tiwq"]
+
+[ext_resource type="Texture2D" uid="uid://dfsjnd3gf47jl" path="res://assets/2d_textures/item_icons/nature_arrow.png" id="1_5owo3"]
+[ext_resource type="Script" path="res://resources/arrow_item_resources/arrow_item_resource.gd" id="1_nqef2"]
+
+[resource]
+script = ExtResource("1_nqef2")
+arrow_element_type = 2
+arrow_speed = 30.0
+arrow_damage = 20.0
+item_key = 3
+display_name = "Flecha de Natureza"
+icon = ExtResource("1_5owo3")

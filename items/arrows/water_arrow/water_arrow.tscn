@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4psnpsuqh1jy"]
+
+[ext_resource type="PackedScene" uid="uid://bstcxqigh5vdb" path="res://items/arrows/arrow_template.tscn" id="1_whgct"]
+[ext_resource type="Resource" uid="uid://dp4h2yly615tj" path="res://resources/arrow_item_resources/water_arrow_resource.tres" id="2_j4fq6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltbpx"]
+albedo_color = Color(0, 0.34902, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iqaln"]
+material = SubResource("StandardMaterial3D_ltbpx")
+
+[node name="WaterArrow" instance=ExtResource("1_whgct")]
+arrow_resource = ExtResource("2_j4fq6")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CapsuleMesh_iqaln")

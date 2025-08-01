@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ArrowItemResource" load_steps=3 format=3 uid="uid://s6u0obu5g4ce"]
+
+[ext_resource type="Texture2D" uid="uid://j3bonlskpytc" path="res://assets/2d_textures/item_icons/wind_arrow.png" id="1_gk5db"]
+[ext_resource type="Script" path="res://resources/arrow_item_resources/arrow_item_resource.gd" id="1_wjy1b"]
+
+[resource]
+script = ExtResource("1_wjy1b")
+arrow_element_type = 0
+arrow_speed = 50.0
+arrow_damage = 15.0
+item_key = 0
+display_name = "Flecha de Vento"
+icon = ExtResource("1_gk5db")

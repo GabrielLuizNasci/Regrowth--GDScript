@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bstcxqigh5vdb"]
+
+[ext_resource type="Script" path="res://items/arrows/arrow.gd" id="1_qtxl0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l501g"]
+radius = 0.15592
+
+[node name="ArrowTemplate" type="CharacterBody3D"]
+script = ExtResource("1_qtxl0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_l501g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, -4.37114e-08, -0.3, 0, 1, -1.31134e-08, 0, 0, 0)

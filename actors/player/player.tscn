@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://cm11d0nijrjoc"]
+
+[ext_resource type="Script" path="res://actors/player/player.gd" id="1_31l8j"]
+[ext_resource type="Script" path="res://actors/player/camera_manager.gd" id="2_lctxg"]
+[ext_resource type="PackedScene" uid="uid://bw6ganhdmf1sm" path="res://items/bow/bow.tscn" id="3_0qqna"]
+[ext_resource type="Script" path="res://actors/player/camera.gd" id="3_yt3qb"]
+[ext_resource type="Script" path="res://items/bow/bow_manager.gd" id="4_xmqc8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yscwo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdhpw"]
+albedo_color = Color(0.451512, 0.263119, 0.173729, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ixbfj"]
+material = SubResource("StandardMaterial3D_kdhpw")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vf3f3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n722d"]
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_31l8j")
+
+[node name="CameraManager" type="Node3D" parent="."]
+script = ExtResource("2_lctxg")
+
+[node name="Arm" type="SpringArm3D" parent="CameraManager"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 2.32515, -0.0321627)
+shape = SubResource("SphereShape3D_yscwo")
+spring_length = 6.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CameraManager/Arm"]
+unique_name_in_owner = true
+near = 0.25
+far = 16384.0
+script = ExtResource("3_yt3qb")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-0.748713, 0, 0.662895, 0, 1, 0, -0.662895, 0, -0.748713, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_ixbfj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_vf3f3")
+
+[node name="BowManager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496951, 0, 0)
+script = ExtResource("4_xmqc8")
+
+[node name="BowArm" type="SpringArm3D" parent="BowManager"]
+unique_name_in_owner = true
+shape = SubResource("SphereShape3D_n722d")
+spring_length = -2.0
+margin = 0.04
+
+[node name="Bow" parent="BowManager/BowArm" instance=ExtResource("3_0qqna")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

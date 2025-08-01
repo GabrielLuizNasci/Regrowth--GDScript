@@ -1,0 +1,35 @@
+[gd_resource type="Terrain3DAssets" load_steps=9 format=3 uid="uid://fpxd33glqc0w"]
+
+[ext_resource type="Texture2D" uid="uid://br7bfxcxh60df" path="res://demo/assets/textures/rock030_alb_ht.png" id="1_jki1o"]
+[ext_resource type="Texture2D" uid="uid://cr72kjil43vgj" path="res://demo/assets/textures/rock030_nrm_rgh.png" id="2_ny0fw"]
+[ext_resource type="Texture2D" uid="uid://bvdxmq6wns1p" path="res://assets/textures/burned_ground_alb_ht.png" id="3_lt04o"]
+[ext_resource type="Texture2D" uid="uid://cqgg77lbbdt00" path="res://assets/textures/burned_ground_norm_rough.png" id="4_7r6iu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57nep"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 85.0
+distance_fade_max_distance = 75.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_qlpcv"]
+material_override = SubResource("StandardMaterial3D_57nep")
+generated_type = 1
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_bj6s5"]
+name = "rock030_alb_ht"
+albedo_texture = ExtResource("1_jki1o")
+normal_texture = ExtResource("2_ny0fw")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_xbja2"]
+name = "burned_ground_alb_ht"
+id = 1
+albedo_texture = ExtResource("3_lt04o")
+normal_texture = ExtResource("4_7r6iu")
+
+[resource]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_qlpcv")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_bj6s5"), SubResource("Terrain3DTextureAsset_xbja2")])

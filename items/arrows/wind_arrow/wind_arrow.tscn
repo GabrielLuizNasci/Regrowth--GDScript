@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://ibav1r42n455"]
+
+[ext_resource type="PackedScene" uid="uid://bstcxqigh5vdb" path="res://items/arrows/arrow_template.tscn" id="1_s1yd2"]
+[ext_resource type="Resource" uid="uid://s6u0obu5g4ce" path="res://resources/arrow_item_resources/wind_arrow_resource.tres" id="2_g1peg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfsm0"]
+albedo_color = Color(0.505344, 0.505344, 0.505344, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yseta"]
+material = SubResource("StandardMaterial3D_dfsm0")
+
+[node name="WindArrow" instance=ExtResource("1_s1yd2")]
+arrow_resource = ExtResource("2_g1peg")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CapsuleMesh_yseta")

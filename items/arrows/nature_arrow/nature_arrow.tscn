@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1dcajtcf4ncg"]
+
+[ext_resource type="PackedScene" uid="uid://bstcxqigh5vdb" path="res://items/arrows/arrow_template.tscn" id="1_eywe7"]
+[ext_resource type="Resource" uid="uid://dwbno6010tiwq" path="res://resources/arrow_item_resources/nature_arrow_resource.tres" id="2_6ci2u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlctb"]
+albedo_color = Color(0.347113, 0.598808, 0.135921, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_468yc"]
+material = SubResource("StandardMaterial3D_rlctb")
+
+[node name="NatureArrow" instance=ExtResource("1_eywe7")]
+arrow_resource = ExtResource("2_6ci2u")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CapsuleMesh_468yc")

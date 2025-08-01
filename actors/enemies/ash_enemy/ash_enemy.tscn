@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bochfcrd1x35j"]
+
+[ext_resource type="PackedScene" uid="uid://bisapr5qhijgk" path="res://actors/enemies/enemy_template.tscn" id="1_xs2p3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1nnup"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qvhtx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryx5o"]
+albedo_color = Color(0.347817, 0.347817, 0.347817, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2abod"]
+material = SubResource("StandardMaterial3D_ryx5o")
+
+[node name="AshEnemy" groups=["Enemy"] instance=ExtResource("1_xs2p3")]
+normal_speed = 3.0
+chase_speed = 5.0
+max_health = 40
+vision_fov = 60.0
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(0.0687988, 0.997631, 0, -0.997631, 0.0687988, 0, 0, 0, 1, 0, -0.551681, 0)
+shape = SubResource("CapsuleShape3D_1nnup")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape3D_qvhtx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="7"]
+mesh = SubResource("CapsuleMesh_2abod")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ArrowItemResource" load_steps=3 format=3 uid="uid://dp4h2yly615tj"]
+
+[ext_resource type="Texture2D" uid="uid://bw4j3gohayvyl" path="res://assets/2d_textures/item_icons/water_arrow.png" id="1_5mb23"]
+[ext_resource type="Script" path="res://resources/arrow_item_resources/arrow_item_resource.gd" id="1_mkxkk"]
+
+[resource]
+script = ExtResource("1_mkxkk")
+arrow_element_type = 3
+arrow_speed = 35.0
+arrow_damage = 15.0
+item_key = 1
+display_name = "Flecha de Agua"
+icon = ExtResource("1_5mb23")

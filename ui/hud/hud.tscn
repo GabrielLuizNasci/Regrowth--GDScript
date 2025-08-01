@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd4coeubsm1ww"]
+
+[ext_resource type="Texture2D" uid="uid://hpp2wohw5nbx" path="res://assets/2d_textures/circle32.png" id="1_vck7t"]
+[ext_resource type="PackedScene" uid="uid://cv4nc3qciu48r" path="res://ui/custom_nodes/element_slot/element_slot.tscn" id="2_d6nyq"]
+[ext_resource type="Texture2D" uid="uid://dxpjp7jslucwt" path="res://assets/2d_textures/square32.png" id="3_l76uu"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vck7t")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ElementBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 32
+
+[node name="ElementSlot" parent="MarginContainer/ElementBoxContainer" instance=ExtResource("2_d6nyq")]
+layout_mode = 2
+
+[node name="ElementSlot2" parent="MarginContainer/ElementBoxContainer" instance=ExtResource("2_d6nyq")]
+layout_mode = 2
+
+[node name="ElementSlot3" parent="MarginContainer/ElementBoxContainer" instance=ExtResource("2_d6nyq")]
+layout_mode = 2
+
+[node name="ElementSlot4" parent="MarginContainer/ElementBoxContainer" instance=ExtResource("2_d6nyq")]
+layout_mode = 2
+
+[node name="PlayerStatsContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="HealthBar" type="TextureProgressBar" parent="MarginContainer/PlayerStatsContainer"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_l76uu")
+texture_progress = ExtResource("3_l76uu")
+tint_under = Color(0.203922, 0.203922, 0.203922, 1)
+tint_progress = Color(0.72549, 0.0156863, 0.152941, 1)
+
+[node name="HealthBar2" type="TextureProgressBar" parent="MarginContainer/PlayerStatsContainer"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_l76uu")
+texture_progress = ExtResource("3_l76uu")
+tint_under = Color(0.203922, 0.203922, 0.203922, 1)
+tint_progress = Color(0.147854, 0.435189, 0.251888, 1)

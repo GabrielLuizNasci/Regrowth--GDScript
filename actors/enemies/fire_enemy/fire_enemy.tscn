@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://xp7taxdsqjh7"]
+
+[ext_resource type="PackedScene" uid="uid://bisapr5qhijgk" path="res://actors/enemies/enemy_template.tscn" id="1_tlgfi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_odln0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aqfrx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejui1"]
+albedo_color = Color(1, 0.247059, 0.101961, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_prtq7"]
+material = SubResource("StandardMaterial3D_ejui1")
+
+[node name="FireEnemy" groups=["Enemy"] instance=ExtResource("1_tlgfi")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.486972, 0)
+shape = SubResource("CapsuleShape3D_odln0")
+
+[node name="Hitbox" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06118, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape3D_aqfrx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00503, 0)
+mesh = SubResource("CapsuleMesh_prtq7")

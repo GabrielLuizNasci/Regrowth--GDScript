@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://brdfap03rpsr3"]
+
+[ext_resource type="Script" path="res://stages/test_menu/test_stage.gd" id="1_ketrh"]
+[ext_resource type="PackedScene" uid="uid://cm11d0nijrjoc" path="res://actors/player/player.tscn" id="2_51r2g"]
+[ext_resource type="Texture2D" uid="uid://cyostvw11872o" path="res://icon.svg" id="3_0a5dx"]
+[ext_resource type="PackedScene" uid="uid://xp7taxdsqjh7" path="res://actors/enemies/fire_enemy/fire_enemy.tscn" id="5_qx5ud"]
+[ext_resource type="PackedScene" uid="uid://bochfcrd1x35j" path="res://actors/enemies/ash_enemy/ash_enemy.tscn" id="6_r2kt3"]
+[ext_resource type="PackedScene" uid="uid://bosbhc62s1waq" path="res://scenes/block.tscn" id="7_547dp"]
+[ext_resource type="PackedScene" uid="uid://bd4coeubsm1ww" path="res://ui/hud/hud.tscn" id="7_g8hth"]
+
+[sub_resource type="GDScript" id="GDScript_6cody"]
+script/source = "extends Sprite3D
+
+var coins = 5
+const speed = 2
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if(Input.is_action_pressed(\"ui_left\")):
+		rotate_y(deg_to_rad(-speed))
+	elif(Input.is_action_pressed(\"ui_right\")):
+		rotate_y(deg_to_rad(speed))
+"
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_5anud"]
+vertices = PackedVector3Array(-18.5, 0.487856, -19.25, -16.25, 0.487856, -19.5, -16.25, 0.487856, -24.5, -24.5, 0.487856, -17.25, -18.5, 0.487856, -17.25, -24.5, 0.487856, -24.5, -9.5, 0.487856, -19.5, -9.5, 0.487856, -24.5, -5, 0.737856, -16, -6.5, 1.48786, -16, -6.5, 1.48786, -13.75, -5, 0.737856, -13.75, 1, 0.487856, -0.75, -7.25, 0.487856, -19.25, -7.25, 0.487856, -17, -5, 0.487856, -17, -5, 0.487856, -12.75, -7.25, 0.487856, -12.75, -7.25, 0.487856, -8.5, -1, 0.487856, -0.5, 24.5, 0.487856, -24.5, -7.75, 0.487856, -8.25, 24.5, 0.487856, 0, 1.25, 0.487856, 0, -8.25, 1.98786, -16.25, -8.25, 1.98786, -13.5, -17.5, 1.98786, -18.5, -17.5, 1.98786, -9.25, -8.25, 1.98786, -18.5, -8.25, 1.98786, -9.25, -24.5, 0.487856, -10.5, -18.5, 0.487856, -10.5, -18.25, 0.487856, -8.25, -1, 0.487856, 0.75, -24.5, 0.487856, 24.5, 0, 0.487856, 24.5, 0, 0.487856, 1, 0.75, 0.487856, 1, 24.5, 0.487856, 24.5)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(0, 4, 3), PackedInt32Array(3, 5, 0), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 7, 1), PackedInt32Array(1, 7, 6), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(12, 11, 8), PackedInt32Array(15, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 16, 12), PackedInt32Array(13, 6, 7), PackedInt32Array(13, 7, 15), PackedInt32Array(15, 7, 20), PackedInt32Array(19, 21, 18), PackedInt32Array(8, 15, 12), PackedInt32Array(12, 15, 22), PackedInt32Array(22, 15, 20), PackedInt32Array(22, 23, 12), PackedInt32Array(12, 16, 11), PackedInt32Array(10, 25, 9), PackedInt32Array(9, 25, 24), PackedInt32Array(24, 25, 26), PackedInt32Array(26, 25, 27), PackedInt32Array(26, 28, 24), PackedInt32Array(25, 29, 27), PackedInt32Array(3, 4, 30), PackedInt32Array(30, 4, 31), PackedInt32Array(30, 31, 32), PackedInt32Array(19, 33, 21), PackedInt32Array(21, 33, 32), PackedInt32Array(32, 33, 30), PackedInt32Array(30, 33, 35), PackedInt32Array(30, 35, 34), PackedInt32Array(33, 36, 35), PackedInt32Array(35, 36, 37), PackedInt32Array(23, 22, 37), PackedInt32Array(37, 22, 38), PackedInt32Array(37, 38, 35)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bqu7q"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7iyql"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6mop8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4a05v"]
+size = Vector3(10, 3, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgb4w"]
+size = Vector3(10, 3, 10)
+
+[sub_resource type="PrismMesh" id="PrismMesh_wl3t2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6jju"]
+size = Vector3(0.452087, 1.36279, 1)
+
+[node name="TestStage" type="Node3D"]
+script = ExtResource("1_ketrh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.612372, 0.324469, 0.720916, -0.707107, -0.183013, 0.683013, 0.353553, -0.928023, 0.117363, 7, 10, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_51r2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.11344, 0)
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.836281, 1.39429)
+visible = false
+texture = ExtResource("3_0a5dx")
+script = SubResource("GDScript_6cody")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_5anud")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.202148, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
+mesh = SubResource("BoxMesh_bqu7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
+shape = SubResource("BoxShape3D_7iyql")
+
+[node name="Blocks" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Block" parent="NavigationRegion3D/Blocks" instance=ExtResource("7_547dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Block2" parent="NavigationRegion3D/Blocks" instance=ExtResource("7_547dp")]
+transform = Transform3D(0.847076, 0.531473, 0, -0.531473, 0.847076, 0, 0, 0, 1, 0.820736, 3.08364, 0)
+
+[node name="Block3" parent="NavigationRegion3D/Blocks" instance=ExtResource("7_547dp")]
+transform = Transform3D(0.773685, -0.63357, 0, 0.63357, 0.773685, 0, 0, 0, 1, 0.734826, 4.69562, 0.105828)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7971, 1.90735e-06, -13.9536)
+physics_material_override = SubResource("PhysicsMaterial_6mop8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("BoxMesh_4a05v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_dgb4w")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.0450279, 2.99966, 0, -2.99966, 0.0450279, 0, 0, 0, 3, -5.14937, -0.581313, -14.7728)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(1.33504, 0.0760521, 0, -0.0553243, 1.83522, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PrismMesh_wl3t2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(0.906273, 0.422665, 0, -0.422665, 0.906276, 0, 0, 0, 1, -0.208001, -0.385517, -0.010437)
+shape = SubResource("BoxShape3D_m6jju")
+
+[node name="FireEnemy" parent="." instance=ExtResource("5_qx5ud")]
+transform = Transform3D(-0.695047, 0, -0.718964, 0, 1, 0, 0.718964, 0, -0.695047, -13.7074, 1.37485, -2.11785)
+
+[node name="AshEnemy" parent="." instance=ExtResource("6_r2kt3")]
+transform = Transform3D(0.764303, 0, -0.644858, 0, 1, 0, 0.644858, 0, 0.764303, -10.7969, 2.5316, -11.9009)
+
+[node name="HUD" parent="." instance=ExtResource("7_g8hth")]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ArrowItemResource" load_steps=3 format=3 uid="uid://mmxgwxvdkhlf"]
+
+[ext_resource type="Script" path="res://resources/arrow_item_resources/arrow_item_resource.gd" id="1_hed7f"]
+[ext_resource type="Texture2D" uid="uid://c5kr7pyynyr56" path="res://assets/2d_textures/item_icons/fire_arrow.png" id="1_j0wj2"]
+
+[resource]
+script = ExtResource("1_hed7f")
+arrow_element_type = 1
+arrow_speed = 45.0
+arrow_damage = 25.0
+item_key = 2
+display_name = "Flecha de Fogo"
+icon = ExtResource("1_j0wj2")

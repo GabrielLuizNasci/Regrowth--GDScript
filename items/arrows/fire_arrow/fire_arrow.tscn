@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl8ubmjifsj8m"]
+
+[ext_resource type="PackedScene" uid="uid://bstcxqigh5vdb" path="res://items/arrows/arrow_template.tscn" id="1_l2e11"]
+[ext_resource type="Resource" uid="uid://mmxgwxvdkhlf" path="res://resources/arrow_item_resources/fire_arrow_resource.tres" id="2_0ik6p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tegd"]
+albedo_color = Color(0.976471, 0.501961, 0.219608, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s8bkv"]
+material = SubResource("StandardMaterial3D_6tegd")
+
+[node name="FireArrow" instance=ExtResource("1_l2e11")]
+arrow_resource = ExtResource("2_0ik6p")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CapsuleMesh_s8bkv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" index="0"]
