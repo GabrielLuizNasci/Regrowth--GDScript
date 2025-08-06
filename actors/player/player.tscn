@@ -46,7 +46,7 @@ mesh = SubResource("CapsuleMesh_ixbfj")
 shape = SubResource("CapsuleShape3D_vf3f3")
 
 [node name="BowManager" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496951, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496951, 0, -0.111133)
 script = ExtResource("4_xmqc8")
 
 [node name="BowArm" type="SpringArm3D" parent="BowManager"]
@@ -56,4 +56,4 @@ spring_length = -2.0
 margin = 0.04
 
 [node name="Bow" parent="BowManager/BowArm" instance=ExtResource("3_0qqna")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.110077, 0)

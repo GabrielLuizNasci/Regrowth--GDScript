@@ -5,6 +5,7 @@ class_name BowManager
 @onready var bow_arm: SpringArm3D = %BowArm
 @onready var bow: Node3D = $Bow
 @onready var camera_manager: Node3D = $"../CameraManager"
+
 @export var bow_rotation_speed := 10.0
 
 var is_locked_on := false
@@ -17,17 +18,14 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not is_locked_on:
-		global_position = camera_manager.global_position
-		var camera_manager_transform = camera_manager.global_transform
-		global_transform.basis = camera_manager_transform.basis
+		var camera_target_transform = camera_manager.camera.global_transform
+		global_transform.basis = global_transform.basis.slerp(camera_target_transform.basis, delta * bow_rotation_speed)
 	else:
 		if is_instance_valid(current_lock_on_target):
 			var target_position = current_lock_on_target.global_position
 			
 			var target_look_at_transform = global_transform.looking_at(target_position, Vector3.UP)
 			global_transform.basis = global_transform.basis.slerp(target_look_at_transform.basis, delta * bow_rotation_speed)
-			
-			global_position = camera_manager.camera.global_position 
 		else:
 			toggle_lock_on(false)
 
