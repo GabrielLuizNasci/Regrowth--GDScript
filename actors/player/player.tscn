@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm11d0nijrjoc"]
+[gd_scene load_steps=12 format=3 uid="uid://cm11d0nijrjoc"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_31l8j"]
 [ext_resource type="Script" path="res://actors/player/camera_manager.gd" id="2_lctxg"]
 [ext_resource type="PackedScene" uid="uid://bw6ganhdmf1sm" path="res://items/bow/bow.tscn" id="3_0qqna"]
 [ext_resource type="Script" path="res://actors/player/camera.gd" id="3_yt3qb"]
 [ext_resource type="Script" path="res://items/bow/bow_manager.gd" id="4_xmqc8"]
+[ext_resource type="Script" path="res://game/managers/player_stats_manager.gd" id="6_imfdu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yscwo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n722d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdhpw"]
 albedo_color = Color(0.451512, 0.263119, 0.173729, 1)
@@ -15,8 +18,6 @@ albedo_color = Color(0.451512, 0.263119, 0.173729, 1)
 material = SubResource("StandardMaterial3D_kdhpw")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vf3f3"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_n722d"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_31l8j")
@@ -37,16 +38,8 @@ near = 0.25
 far = 16384.0
 script = ExtResource("3_yt3qb")
 
-[node name="Body" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(-0.748713, 0, 0.662895, 0, 1, 0, -0.662895, 0, -0.748713, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_ixbfj")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_vf3f3")
-
 [node name="BowManager" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496951, 0, -0.111133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.111)
 script = ExtResource("4_xmqc8")
 
 [node name="BowArm" type="SpringArm3D" parent="BowManager"]
@@ -57,3 +50,16 @@ margin = 0.04
 
 [node name="Bow" parent="BowManager/BowArm" instance=ExtResource("3_0qqna")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.110077, 0)
+
+[node name="Body" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-0.748713, 0, 0.662895, 0, 1, 0, -0.662895, 0, -0.748713, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_ixbfj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_vf3f3")
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="PlayerStatsManager" type="Node" parent="Managers"]
+script = ExtResource("6_imfdu")

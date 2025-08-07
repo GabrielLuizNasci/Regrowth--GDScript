@@ -1,11 +1,6 @@
-[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://dxd6cxgi4g0dw"]
+[gd_resource type="ParticleProcessMaterial" load_steps=4 format=3 uid="uid://dxd6cxgi4g0dw"]
 
-[sub_resource type="Gradient" id="Gradient_304sr"]
-offsets = PackedFloat32Array(0, 0.527273, 1)
-colors = PackedColorArray(0.827451, 0.619608, 0, 0.666667, 0.835294, 0.172549, 0, 1, 0.835294, 0.172549, 0, 0.666667)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ro7e8"]
-gradient = SubResource("Gradient_304sr")
+[ext_resource type="Texture2D" uid="uid://b4uw4wipon76r" path="res://resources/particle_resources/fire_gradient.tres" id="1_mlly6"]
 
 [sub_resource type="Curve" id="Curve_8wccd"]
 _data = [Vector2(0, 0.340659), 0.0, 0.0, 0, 0, Vector2(0.282609, 1), 0.0, 0.0, 0, 0, Vector2(0.768116, 0.813187), -0.83668, -0.83668, 0, 0, Vector2(1, 0.505494), 0.0, 0.0, 0, 0]
@@ -27,7 +22,7 @@ gravity = Vector3(0, 1, 0)
 scale_min = 2.0
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_j3hs3")
-color_ramp = SubResource("GradientTexture1D_ro7e8")
+color_ramp = ExtResource("1_mlly6")
 turbulence_enabled = true
 turbulence_noise_speed_random = 2.0
 turbulence_influence_min = 0.01

@@ -31,6 +31,7 @@ func shoot_arrow() -> void:
 		instance.position = arrow_spawn_point.global_position
 		instance.transform.basis = arrow_spawn_point.global_transform.basis
 		get_tree().current_scene.add_child(instance)
+		
 		print("Flecha de ", current_arrow_element_key, " disparada!")
 	else:
 		print("Erro ao carregar a cena da flecha para o elemento: ", current_arrow_element_key)

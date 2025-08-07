@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	
 	if(Input.is_action_just_pressed("attack")):
 		EventSystem.BOW_shoot_arrow.emit()
+		EventSystem.PLA_change_energy.emit(-5.0)
 
 func move() -> void:
 	var direction: Vector3 = get_camera_relative_input()
