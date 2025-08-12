@@ -6,29 +6,37 @@ extends CharacterBody3D
 @export var jump_count := 0
 @export var max_jump := 2
 @export var gravity := 0.2
+@export var stamina_cost_per_shot := 5.0
+@export var stamina_cost_per_jump := 3.0
 
 @onready var bow_manager: BowManager = $BowManager
 @onready var bow: Node3D = $BowManager/Bow
 @onready var body: MeshInstance3D = %Body
-
+@onready var player_stats_manager: Node = $Managers/PlayerStatsManager
 
 var last_movement_dir := Vector3.BACK
 var is_grounded := true
 var is_sprinting := false
 
+func _enter_tree() -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
 	move()
 	
 	if(Input.is_action_just_pressed("attack")):
-		EventSystem.BOW_shoot_arrow.emit()
-		EventSystem.PLA_change_energy.emit(-5.0)
+		if player_stats_manager.current_energy >= stamina_cost_per_shot:
+			EventSystem.BOW_shoot_arrow.emit()
+			EventSystem.PLA_change_energy.emit(-stamina_cost_per_shot)
 
 func move() -> void:
 	var direction: Vector3 = get_camera_relative_input()
 	
 	if Input.is_action_just_pressed("jump") and jump_count <= max_jump:
-		velocity.y = jump_speed
-		jump_count += 1
+		if player_stats_manager.current_energy >= stamina_cost_per_jump:
+			velocity.y = jump_speed
+			EventSystem.PLA_change_energy.emit(-stamina_cost_per_jump)
+			jump_count = jump_count + 1
 	
 	if is_on_floor():
 		jump_count = 0
@@ -53,7 +61,6 @@ func move() -> void:
 	
 	var target_angle := Vector3.BACK.signed_angle_to(last_movement_dir, Vector3.UP)
 	body.global_rotation.y = target_angle
-	
 	move_and_slide()
 
 func get_camera_relative_input() -> Vector3:

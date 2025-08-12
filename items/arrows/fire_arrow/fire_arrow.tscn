@@ -1,13 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8ubmjifsj8m"]
+[gd_scene load_steps=12 format=3 uid="uid://dl8ubmjifsj8m"]
 
 [ext_resource type="PackedScene" uid="uid://bstcxqigh5vdb" path="res://items/arrows/arrow_template.tscn" id="1_l2e11"]
 [ext_resource type="Resource" uid="uid://mmxgwxvdkhlf" path="res://resources/arrow_item_resources/fire_arrow_resource.tres" id="2_0ik6p"]
+[ext_resource type="Texture2D" uid="uid://b4uw4wipon76r" path="res://resources/particle_resources/fire_gradient.tres" id="3_70qsy"]
+[ext_resource type="Texture2D" uid="uid://hpp2wohw5nbx" path="res://assets/2d_textures/circle32.png" id="4_a3c4r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tegd"]
 albedo_color = Color(0.976471, 0.501961, 0.219608, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s8bkv"]
 material = SubResource("StandardMaterial3D_6tegd")
+
+[sub_resource type="Curve" id="Curve_8wccd"]
+_data = [Vector2(0, 0.340659), 0.0, 0.0, 0, 0, Vector2(0.282609, 1), 0.0, 0.0, 0, 0, Vector2(0.768116, 0.813187), -0.83668, -0.83668, 0, 0, Vector2(1, 0.505494), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_j3hs3"]
+curve = SubResource("Curve_8wccd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ei0sm"]
+lifetime_randomness = 0.5
+emission_shape_scale = Vector3(5, 2, 2)
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 1, 0)
+scale_min = 2.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_j3hs3")
+color_ramp = ExtResource("3_70qsy")
+turbulence_enabled = true
+turbulence_noise_speed_random = 2.0
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8p3w"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_a3c4r")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_nxv4c"]
+material = SubResource("StandardMaterial3D_r8p3w")
+size = Vector2(0.05, 0.05)
 
 [node name="FireArrow" instance=ExtResource("1_l2e11")]
 arrow_resource = ExtResource("2_0ik6p")
@@ -16,3 +59,10 @@ arrow_resource = ExtResource("2_0ik6p")
 mesh = SubResource("CapsuleMesh_s8bkv")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" index="0"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="MeshInstance3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 8.88178e-16, 0, 0, 1, 0, -0.188813, 2.75109e-08)
+amount = 32
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_ei0sm")
+draw_pass_1 = SubResource("QuadMesh_nxv4c")

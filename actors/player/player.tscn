@@ -63,3 +63,14 @@ shape = SubResource("CapsuleShape3D_vf3f3")
 
 [node name="PlayerStatsManager" type="Node" parent="Managers"]
 script = ExtResource("6_imfdu")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="BowCooldownTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+
+[node name="StaminaRecoveryTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 0.5
+
+[connection signal="timeout" from="Timers/StaminaRecoveryTimer" to="Managers/PlayerStatsManager" method="_start_stamina_recovery"]

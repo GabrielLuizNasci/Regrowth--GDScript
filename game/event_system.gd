@@ -21,6 +21,9 @@ signal PLA_change_energy
 signal PLA_energy_updated
 signal PLA_change_health
 signal PLA_health_updated
+signal PLA_can_shoot
+signal PLA_stamina_empty
+signal PLA_stamina_refilled
 
 #Sinais para camera
 signal CAM_set_lock_on_target
