@@ -17,10 +17,15 @@ signal EQU_change_equippable_weapon
 #Sinais para Jogador
 signal PLA_freeze_player
 signal PLA_unfreeze_player
+
 signal PLA_change_energy
 signal PLA_energy_updated
+signal PLA_energy_increased
+
 signal PLA_change_health
 signal PLA_health_updated
+signal PLA_health_increased
+
 signal PLA_can_shoot
 signal PLA_stamina_empty
 signal PLA_stamina_refilled

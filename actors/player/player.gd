@@ -8,15 +8,18 @@ extends CharacterBody3D
 @export var gravity := 0.2
 @export var stamina_cost_per_shot := 5.0
 @export var stamina_cost_per_jump := 3.0
+@export var bow_shoot_delay := 0.75
 
 @onready var bow_manager: BowManager = $BowManager
 @onready var bow: Node3D = $BowManager/Bow
 @onready var body: MeshInstance3D = %Body
 @onready var player_stats_manager: Node = $Managers/PlayerStatsManager
+@onready var bow_cooldown_timer: Timer = %BowCooldownTimer
 
 var last_movement_dir := Vector3.BACK
 var is_grounded := true
 var is_sprinting := false
+var can_shoot := true
 
 func _enter_tree() -> void:
 	pass
@@ -25,9 +28,11 @@ func _physics_process(delta: float) -> void:
 	move()
 	
 	if(Input.is_action_just_pressed("attack")):
-		if player_stats_manager.current_energy >= stamina_cost_per_shot:
+		if player_stats_manager.current_energy >= stamina_cost_per_shot and can_shoot == true:
 			EventSystem.BOW_shoot_arrow.emit()
 			EventSystem.PLA_change_energy.emit(-stamina_cost_per_shot)
+			can_shoot = false
+			bow_cooldown_timer.start(bow_shoot_delay)
 
 func move() -> void:
 	var direction: Vector3 = get_camera_relative_input()
@@ -91,7 +96,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("arrow_element_down"):
 		EventSystem.BOW_change_element.emit(ItemConfig.Keys.NatureArrow)
 	
-	if event.is_action_pressed("lock_on_toggle"):
+	if event.is_action_pressed("toggle_lock"):
 		if bow_manager.is_locked_on:
 			bow_manager.toggle_lock_on(false)
 		else:
@@ -99,3 +104,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("ui_accept"):
 		velocity.y = 0
+
+func _on_bow_cooldown_timer_timeout() -> void:
+	can_shoot = true

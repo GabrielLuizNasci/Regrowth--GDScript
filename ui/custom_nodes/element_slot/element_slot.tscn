@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv4nc3qciu48r"]
+[gd_scene load_steps=2 format=3 uid="uid://cv4nc3qciu48r"]
 
 [ext_resource type="Texture2D" uid="uid://cejet3ni3pl0m" path="res://assets/2d_textures/panel_brown.png" id="1_cgyfj"]
-[ext_resource type="Texture2D" uid="uid://uvu03712onoa" path="res://assets/2d_textures/panel_blue.png" id="2_spxmi"]
 
 [node name="ElementSlot" type="TextureRect"]
 custom_minimum_size = Vector2(96, 96)
@@ -24,13 +23,3 @@ theme_override_constants/margin_bottom = 8
 
 [node name="IconTextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 20.0
-offset_bottom = 20.0
-texture = ExtResource("2_spxmi")
-expand_mode = 1

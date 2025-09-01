@@ -11,6 +11,10 @@ enum Keys {
 	Bow,
 	Whip,
 	
+	#Cristais
+	HealthCrystal,
+	EnergyCrystal,
+	
 	#Flechas
 	WindArrow,
 	FireArrow,
@@ -19,6 +23,9 @@ enum Keys {
 }
 
 const ITEM_RESOURCE_PATHS := {
+	# Cristais
+	Keys.HealthCrystal: "res://resources/buff_item_resources/life_cristal_resource.tres",
+	
 	# Flechas
 	Keys.WindArrow: "res://resources/arrow_item_resources/wind_arrow_resource.tres",
 	Keys.FireArrow: "res://resources/arrow_item_resources/fire_arrow_resource.tres",

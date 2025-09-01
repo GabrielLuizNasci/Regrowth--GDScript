@@ -3,7 +3,7 @@ extends Node3D
 class_name BowManager
 
 @onready var bow_arm: SpringArm3D = %BowArm
-@onready var bow: Node3D = $Bow
+@onready var bow: Node3D = %Bow
 @onready var camera_manager: Node3D = $"../CameraManager"
 
 @export var bow_rotation_speed := 10.0

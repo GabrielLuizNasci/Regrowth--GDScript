@@ -44,11 +44,13 @@ script = ExtResource("4_xmqc8")
 
 [node name="BowArm" type="SpringArm3D" parent="BowManager"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.998407, -0.056414, 0, 0.056414, 0.998407, 0, 0, 0)
 shape = SubResource("SphereShape3D_n722d")
 spring_length = -2.0
 margin = 0.04
 
 [node name="Bow" parent="BowManager/BowArm" instance=ExtResource("3_0qqna")]
+unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.110077, 0)
 
 [node name="Body" type="MeshInstance3D" parent="."]
@@ -71,6 +73,6 @@ unique_name_in_owner = true
 
 [node name="StaminaRecoveryTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-wait_time = 0.5
 
+[connection signal="timeout" from="Timers/BowCooldownTimer" to="." method="_on_bow_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/StaminaRecoveryTimer" to="Managers/PlayerStatsManager" method="_start_stamina_recovery"]

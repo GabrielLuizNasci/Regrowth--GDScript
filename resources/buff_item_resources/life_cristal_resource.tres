@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BuffItemResource" load_steps=2 format=3 uid="uid://dea4iwkh2twqg"]
+
+[ext_resource type="Script" path="res://resources/buff_item_resources/buff_item_resource.gd" id="1_83e8x"]
+
+[resource]
+script = ExtResource("1_83e8x")
+buff_type = 0
+buff_value = 10.0
+item_key = 6
+display_name = "Cristal Vermelho"
