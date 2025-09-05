@@ -3,7 +3,6 @@ extends Node
 class_name ItemConfig
 
 enum Keys {
-	
 	Wind,
 	Water,
 	Fire,

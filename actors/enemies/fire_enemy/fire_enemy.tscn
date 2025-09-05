@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://xp7taxdsqjh7"]
+[gd_scene load_steps=19 format=4 uid="uid://xp7taxdsqjh7"]
 
 [ext_resource type="PackedScene" uid="uid://bisapr5qhijgk" path="res://actors/enemies/enemy_template.tscn" id="1_tlgfi"]
 [ext_resource type="Script" path="res://game/flickering_light.gd" id="2_1jvqe"]
+[ext_resource type="Script" path="res://actors/enemies/fire_enemy/fire_enemy.gd" id="2_fgkpb"]
 [ext_resource type="Texture2D" uid="uid://hpp2wohw5nbx" path="res://assets/2d_textures/circle32.png" id="3_6dxod"]
 [ext_resource type="Material" uid="uid://dxd6cxgi4g0dw" path="res://resources/particle_resources/fire_particles.tres" id="3_8j30r"]
 
@@ -98,6 +99,34 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_p54hm"]
+resource_name = "HitReact"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireEnemy:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.433333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(-0.436332, -3.14159, 0), Vector3(-0.785398, -3.14159, 0), Vector3(-0.261799, -3.14159, 0), Vector3(0, -3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireEnemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 2), Vector3(0, 0, 3.383), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_p6o3k"]
 length = 0.001
 tracks/0/type = "value"
@@ -112,9 +141,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, -3.14159, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_p54hm"]
-resource_name = "HitReact"
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireEnemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.769772, 3.38325)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4fj5b"]
 _data = {
@@ -124,6 +162,7 @@ _data = {
 }
 
 [node name="FireEnemy" instance=ExtResource("1_tlgfi")]
+script = ExtResource("2_fgkpb")
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0194625, 0)
@@ -149,7 +188,7 @@ shape = SubResource("CylinderShape3D_7andu")
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.73729, -0.232083)
 
 [node name="FireEnemy" type="MeshInstance3D" parent="fire_enemy" index="0"]
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
+transform = Transform3D(-0.5, 0, -1.26759e-06, 0, 0.5, 0, 1.26759e-06, 0, -0.5, 0, -0.769772, 3.38325)
 mesh = SubResource("ArrayMesh_bhnq3")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_yok30")
@@ -157,7 +196,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_yok30")
 [node name="OmniLight3D" type="OmniLight3D" parent="fire_enemy/FireEnemy" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.17791, -1.33823)
 light_color = Color(1, 0.796078, 0.443137, 1)
-light_energy = 1.32555
+light_energy = 1.39996
 light_size = 0.3
 omni_range = 11.8402
 script = ExtResource("2_1jvqe")

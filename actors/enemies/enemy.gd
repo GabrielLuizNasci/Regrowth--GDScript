@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name BaseEnemy
+
 const ANIM_BLEND = 0.2
 const GRAVITY := 2.0
 
@@ -170,7 +172,7 @@ func pick_away_from_player_velocity() -> void:
 	velocity = direction.normalized() * chase_speed
 
 func take_hit(arrow_item_resource : ArrowItemResource) -> void:
-	health -= arrow_item_resource.damage
+	health -= arrow_item_resource.arrow_damage
 	
 	if state != States.Dead and health <= 0:
 		set_state(States.Dead)
@@ -195,7 +197,7 @@ func set_state(new_state : States) -> void:
 			idle_timer.stop()
 			patrol_timer.stop()
 			search_timer.stop()
-			#animation_player.play(hurt_animation.pick_random(), ANIM_BLEND)
+			animation_player.play("HitReact", ANIM_BLEND)
 		States.Chase:
 			idle_timer.stop()
 			patrol_timer.stop()
@@ -204,7 +206,7 @@ func set_state(new_state : States) -> void:
 		States.Attack:
 			animation_player.play("Attack", ANIM_BLEND)
 		States.Dead:
-			pass
+			queue_free()
 			#animation_player.play("Death", ANIM_BLEND)
 
 func player_in_fov() -> bool:

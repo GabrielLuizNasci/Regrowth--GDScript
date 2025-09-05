@@ -25,10 +25,12 @@ func _physics_process(delta: float) -> void:
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
 		print("Flecha colidiu com: ", collision.get_collider().name)
 		
-		if collision.get_collider().has_method("take_damage"):
-			collision.get_collider().take_damage(damage, element_type)
+		if collider.has_method("take_hit"):
+			collider.take_hit(arrow_resource)
 		
 		queue_free() # Destrói a flecha após colidir
 		return

@@ -1,18 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://to8re17teim"]
+[gd_scene load_steps=7 format=3 uid="uid://to8re17teim"]
 
+[ext_resource type="Script" path="res://stages/stage.gd" id="1_88ynj"]
 [ext_resource type="Terrain3DMaterial" uid="uid://cwcdtcsankxmi" path="res://data/main_game_material.tres" id="1_bxme1"]
 [ext_resource type="Terrain3DAssets" uid="uid://fpxd33glqc0w" path="res://data/main_game_assets.tres" id="2_78rvq"]
 [ext_resource type="PackedScene" uid="uid://cm11d0nijrjoc" path="res://actors/player/player.tscn" id="3_r44lf"]
 [ext_resource type="PackedScene" uid="uid://xp7taxdsqjh7" path="res://actors/enemies/fire_enemy/fire_enemy.tscn" id="4_2rycl"]
 
-[node name="BurnedForest" type="Node"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_aq82e"]
 
-[node name="Terrain3D" type="Terrain3D" parent="."]
-data_directory = "res://data"
-material = ExtResource("1_bxme1")
-assets = ExtResource("2_78rvq")
-top_level = true
-metadata/_edit_lock_ = true
+[node name="BurnedForest" type="Node"]
+script = ExtResource("1_88ynj")
 
 [node name="Player" parent="." instance=ExtResource("3_r44lf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.4876, 0)
@@ -22,3 +19,13 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 
 [node name="FireEnemy" parent="." instance=ExtResource("4_2rycl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 6.12683, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_aq82e")
+
+[node name="Terrain3D" type="Terrain3D" parent="NavigationRegion3D"]
+data_directory = "res://data"
+material = ExtResource("1_bxme1")
+assets = ExtResource("2_78rvq")
+top_level = true
+metadata/_edit_lock_ = true

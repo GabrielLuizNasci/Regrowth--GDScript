@@ -70,13 +70,13 @@ func move() -> void:
 
 func get_camera_relative_input() -> Vector3:
 	var input_dir: Vector3 = Vector3.ZERO
-	if Input.is_key_pressed(KEY_A): # Left
+	if Input.is_key_pressed(KEY_A): # Esquerda
 		input_dir -= %Camera3D.global_transform.basis.x
-	if Input.is_key_pressed(KEY_D): # Right
+	if Input.is_key_pressed(KEY_D): # Direita
 		input_dir += %Camera3D.global_transform.basis.x
-	if Input.is_key_pressed(KEY_W): # Forward
+	if Input.is_key_pressed(KEY_W): # Frente
 		input_dir -= %Camera3D.global_transform.basis.z
-	if Input.is_key_pressed(KEY_S): # Backward
+	if Input.is_key_pressed(KEY_S): # Trás
 		input_dir += %Camera3D.global_transform.basis.z
 	return input_dir
 
