@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://brdfap03rpsr3"]
 
-[ext_resource type="Script" path="res://stages/test_menu/test_stage.gd" id="1_ketrh"]
+[ext_resource type="Script" path="res://stages/test_stage/test_stage.gd" id="1_ketrh"]
 [ext_resource type="PackedScene" uid="uid://cm11d0nijrjoc" path="res://actors/player/player.tscn" id="2_51r2g"]
 [ext_resource type="Texture2D" uid="uid://cyostvw11872o" path="res://icon.svg" id="3_0a5dx"]
 [ext_resource type="PackedScene" uid="uid://xp7taxdsqjh7" path="res://actors/enemies/fire_enemy/fire_enemy.tscn" id="5_qx5ud"]

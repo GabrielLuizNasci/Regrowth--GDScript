@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjhhs622hg03f"]
+
+[ext_resource type="Script" path="res://stages/main_menu/main_menu.gd" id="1_mv37d"]
+[ext_resource type="Script" path="res://ui/custom_nodes/ui_button.gd" id="2_abyip"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_mv37d")
+
+[node name="MainGameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainGameUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MainGameUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Iniciar"
+script = ExtResource("2_abyip")
+
+[node name="SettingsButton" type="Button" parent="MainGameUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Configurações"
+script = ExtResource("2_abyip")
+
+[node name="CreditsButton" type="Button" parent="MainGameUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Créditos"
+script = ExtResource("2_abyip")
+
+[node name="ExitButton" type="Button" parent="MainGameUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Sair"
+script = ExtResource("2_abyip")
+
+[connection signal="pressed" from="MainGameUI/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainGameUI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainGameUI/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainGameUI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

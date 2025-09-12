@@ -19,3 +19,5 @@ script = ExtResource("1_lm11s")
 
 [node name="BulletinController" type="Node" parent="UILayer"]
 script = ExtResource("4_wyxsw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

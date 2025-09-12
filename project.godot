@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gojira"
-run/main_scene="res://stages/test_menu/test_stage.tscn"
+run/main_scene="res://stages/test_stage/test_stage.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

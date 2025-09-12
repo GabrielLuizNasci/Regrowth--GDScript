@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwvvd42a0fj4c"]
+[gd_scene load_steps=3 format=3 uid="uid://dwvvd42a0fj4c"]
 
 [ext_resource type="PackedScene" uid="uid://comu8s2ecmmcd" path="res://bulletin/bulletin_template.tscn" id="1_gjw30"]
+[ext_resource type="Script" path="res://bulletin/interaction_prompt/interaction_promp.gd" id="2_1bq7c"]
 
 [node name="InteractionPromp" instance=ExtResource("1_gjw30")]
+script = ExtResource("2_1bq7c")
 
 [node name="Label" type="Label" parent="." index="0"]
 custom_minimum_size = Vector2(128, 64)

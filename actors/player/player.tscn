@@ -23,6 +23,7 @@ material = SubResource("StandardMaterial3D_kdhpw")
 script = ExtResource("1_31l8j")
 
 [node name="CameraManager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00613308, 0.620615, 0.000375152)
 script = ExtResource("2_lctxg")
 
 [node name="Arm" type="SpringArm3D" parent="CameraManager"]
@@ -34,9 +35,16 @@ margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="CameraManager/Arm"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, -0.715472, -0.33363)
 near = 0.25
 far = 16384.0
 script = ExtResource("3_yt3qb")
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraManager"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0)
+target_position = Vector3(0, -1, -2)
+collision_mask = 4
+collide_with_areas = true
 
 [node name="BowManager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.111)
