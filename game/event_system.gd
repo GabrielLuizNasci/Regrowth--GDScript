@@ -37,6 +37,9 @@ signal PLA_stamina_refilled
 signal CAM_set_lock_on_target
 signal CAM_clear_lock_on_target
 
+signal GAM_game_fade_in
+signal GAM_game_fade_out
+
 #Sinais de controle da HUD
 signal HUD_hide_hud
 signal HUD_show_hud

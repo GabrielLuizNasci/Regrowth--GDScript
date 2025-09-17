@@ -1,5 +1,4 @@
 extends Button
-
 class_name UIButton
 
 func _ready() -> void:

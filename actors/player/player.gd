@@ -22,7 +22,10 @@ var is_sprinting := false
 var can_shoot := true
 
 func _enter_tree() -> void:
-	pass
+	EventSystem.HUD_show_hud.emit()
+
+func _exit_tree() -> void:
+	EventSystem.HUD_hide_hud.emit()
 
 func _physics_process(delta: float) -> void:
 	move()

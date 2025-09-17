@@ -56,4 +56,4 @@ func change_health(health_change: float) -> void:
 	
 	if current_health <= 0:
 		EventSystem.PLA_freeze_player.emit()
-		#EventSystem.STA_change_stage.emit(StageConfig.Keys.MainMenu)
+		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.GameOverMenu)

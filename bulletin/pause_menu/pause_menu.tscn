@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://clskvtfph7r4l"]
+
+[ext_resource type="PackedScene" uid="uid://cx6udf0tjt5px" path="res://bulletin/fading_bulletin/fading_bulletin_template.tscn" id="1_bpde8"]
+[ext_resource type="Theme" uid="uid://cxipnqh0uuh32" path="res://resources/default_ui_theme.tres" id="2_i6yir"]
+
+[node name="PauseMenu" instance=ExtResource("1_bpde8")]
+theme = ExtResource("2_i6yir")

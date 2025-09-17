@@ -13,6 +13,11 @@ func _ready() -> void:
 		if scatter_node.has_signal("build_completed"):
 			scatter_node.build_completed.connect(scatter_node_loaded)
 	
+	if show_mouse:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	if scatter_nodes.is_empty():
 		loading_complete.emit()
 

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://ti7ccxv1s7hn"]
+
+[ext_resource type="PackedScene" uid="uid://cx6udf0tjt5px" path="res://bulletin/fading_bulletin/fading_bulletin_template.tscn" id="1_hjuwy"]
+[ext_resource type="Theme" uid="uid://cxipnqh0uuh32" path="res://resources/default_ui_theme.tres" id="2_pdwg3"]
+[ext_resource type="Script" path="res://bulletin/game_over_menu/game_over_menu.gd" id="2_y51ka"]
+[ext_resource type="Script" path="res://ui/custom_nodes/ui_button.gd" id="3_t52mx"]
+
+[node name="GameOverMenu" instance=ExtResource("1_hjuwy")]
+theme = ExtResource("2_pdwg3")
+script = ExtResource("2_y51ka")
+
+[node name="ColorRect" parent="." index="0"]
+color = Color(1, 0, 0, 0.298039)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Recomeçar"
+script = ExtResource("3_t52mx")
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Menu Principal"
+script = ExtResource("3_t52mx")
+
+[node name="ExitButton" type="Button" parent="VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Sair"
+script = ExtResource("3_t52mx")
+
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
