@@ -6,6 +6,7 @@
 radius = 0.15592
 
 [node name="ArrowTemplate" type="CharacterBody3D"]
+collision_layer = 73
 script = ExtResource("1_qtxl0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

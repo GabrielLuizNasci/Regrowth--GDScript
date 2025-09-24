@@ -20,6 +20,8 @@ material = SubResource("StandardMaterial3D_kdhpw")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vf3f3"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
+collision_layer = 3
+collision_mask = 83
 script = ExtResource("1_31l8j")
 
 [node name="CameraManager" type="Node3D" parent="."]
@@ -40,7 +42,7 @@ near = 0.25
 far = 16384.0
 script = ExtResource("3_yt3qb")
 
-[node name="RayCast3D" type="RayCast3D" parent="CameraManager"]
+[node name="InteractionRayCast" type="RayCast3D" parent="CameraManager"]
 transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0)
 target_position = Vector3(0, -1, -2)
 collision_mask = 4

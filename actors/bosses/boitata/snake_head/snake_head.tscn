@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx1y7xtfcupme"]
+
+[ext_resource type="Script" path="res://actors/bosses/boitata/snake_head/snake_head.gd" id="1_psivi"]
+[ext_resource type="PackedScene" uid="uid://b1as66j8fowik" path="res://assets/meshes/boitata/snake_head.blend" id="2_tu8rk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7ixf6"]
+radius = 2.33577
+height = 14.8381
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1apxi"]
+
+[node name="Snake" type="CharacterBody3D"]
+script = ExtResource("1_psivi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.170112, 0.4318)
+shape = SubResource("CapsuleShape3D_7ixf6")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AgressiveTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="DisappearAfterDeathTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="VisionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09264, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionArea"]
+shape = SubResource("SphereShape3D_1apxi")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82439, 3.52001)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999048, 0.0436194, 0, -0.0436194, 0.999048, 0, 0, 0)
+target_position = Vector3(0, -1, 30)
+
+[node name="snake_head" parent="." instance=ExtResource("2_tu8rk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
+[connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]

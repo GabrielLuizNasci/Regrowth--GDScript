@@ -6,11 +6,13 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_qbb77"]
 
 [node name="EnemyTemplate" type="CharacterBody3D" groups=["Enemy"]]
+collision_mask = 75
 script = ExtResource("1_dsokq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
 [node name="Hitbox" parent="." instance=ExtResource("2_nf8ex")]
+collision_mask = 0
 
 [node name="EyesMarker" type="Marker3D" parent="."]
 

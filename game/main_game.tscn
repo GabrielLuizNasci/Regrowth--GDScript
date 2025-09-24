@@ -75,6 +75,7 @@ process_mode = 3
 script = ExtResource("1_np8ol")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="HUDController" type="Node" parent="UILayer"]
 script = ExtResource("1_lm11s")
@@ -85,7 +86,7 @@ script = ExtResource("1_lm11s")
 script = ExtResource("4_wyxsw")
 
 [node name="FadingLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 99
 
 [node name="GameFadeController" type="ColorRect" parent="FadingLayer" node_paths=PackedStringArray("animation_player")]
 anchors_preset = 15

@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjhhs622hg03f"]
+[gd_scene load_steps=9 format=3 uid="uid://bjhhs622hg03f"]
 
 [ext_resource type="Script" path="res://stages/main_menu/main_menu.gd" id="1_mv37d"]
-[ext_resource type="Script" path="res://ui/custom_nodes/ui_button.gd" id="2_abyip"]
 [ext_resource type="Terrain3DMaterial" uid="uid://cwcdtcsankxmi" path="res://data/main_game_material.tres" id="2_ltqku"]
 [ext_resource type="Theme" uid="uid://cxipnqh0uuh32" path="res://resources/default_ui_theme.tres" id="2_p18kr"]
 [ext_resource type="Terrain3DAssets" uid="uid://fpxd33glqc0w" path="res://data/main_game_assets.tres" id="3_cj0px"]
@@ -47,7 +46,7 @@ transform = Transform3D(-0.5, -0.365998, -0.784886, 0, 0.906308, -0.422618, 0.86
 [node name="Camera3D" type="Camera3D" parent="Forest/CameraHolder"]
 script = ExtResource("4_jc4c1")
 
-[node name="MainGameUI" type="Control" parent="."]
+[node name="MainMenuUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_p18kr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainGameUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,42 +65,23 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label" type="Label" parent="MainGameUI/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Regrowth"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartButton" type="Button" parent="MainGameUI/VBoxContainer"]
+[node name="StartButton" type="Button" parent="MainMenuUI/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_mode = 0
 text = "Iniciar"
-script = ExtResource("2_abyip")
 
-[node name="SettingsButton" type="Button" parent="MainGameUI/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MainMenuUI/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_mode = 0
-text = "Configurações"
-script = ExtResource("2_abyip")
+text = "Configurações
+"
 
-[node name="CreditsButton" type="Button" parent="MainGameUI/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MainMenuUI/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_mode = 0
-text = "Créditos"
-script = ExtResource("2_abyip")
+text = "Sair do Jogo
+"
 
-[node name="ExitButton" type="Button" parent="MainGameUI/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-focus_mode = 0
-text = "Sair"
-script = ExtResource("2_abyip")
-
-[connection signal="pressed" from="MainGameUI/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MainGameUI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="MainGameUI/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="MainGameUI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

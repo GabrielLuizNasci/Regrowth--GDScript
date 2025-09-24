@@ -9,6 +9,8 @@ func _enter_tree() -> void:
 	EventSystem.GAM_game_fade_out.connect(fade_out)
 
 func fade_in(fade_time: float, maybe_callback = null, show_loading_label = false) -> void:
+	mouse_filter = MOUSE_FILTER_STOP
+	
 	var tween := create_tween()
 	tween.tween_property(self, "color", Color.BLACK, fade_time)
 	
@@ -26,3 +28,8 @@ func fade_out(fade_time: float, maybe_callback = null) -> void:
 		tween.tween_callback(maybe_callback)
 	
 	animation_player.play("RESET")
+	
+	tween.finished.connect(_on_fade_out_finished)
+
+func _on_fade_out_finished() -> void:
+	mouse_filter = MOUSE_FILTER_IGNORE
