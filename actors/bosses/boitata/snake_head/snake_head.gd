@@ -6,16 +6,19 @@ const ANIM_BLEND = 0.2
 const GRAVITY := 2.0
 
 enum States {
+	Patrol,
 	Chase,
-	Search,
-	Attack,
 	Hurt,
 	Dead
 }
 
-var state := States.Chase
+var state := States.Patrol
 
-@onready var search_timer: Timer = %SearchTimer
+#Temporizadores
+@onready var agressive_timer: Timer = %AgressiveTimer
+@onready var disappear_after_death_timer: Timer = %DisappearAfterDeathTimer
+@onready var patrol_timer: Timer = %PatrolTimer
+
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("Player")
 @onready var nav_agent = $NavigationAgent3D
 @onready var main_collision_shape: CollisionShape3D = $CollisionShape3D
@@ -24,89 +27,57 @@ var state := States.Chase
 @onready var vision_area_collision_shape: CollisionShape3D = $VisionArea/CollisionShape3D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-@export var chase_speed := 8.0
-@export var max_health := 50
+@export var normal_speed := 5.0
+@export var chase_speed := 10.0
+@export var max_health := 100
 @export var turn_speed_weight := 0.1
-@export var min_search_time := 1.0
-@export var max_search_time := 3.0
+@export var min_patrol_time := 2.0
+@export var max_patrol_time := 4.0
 @export var attack_distance = 2.0
 @export var damage := 20.0
 @export var vision_range := 15.0
 @export var vision_fov := 80.0
 
 var player_in_vision_range := false
-var last_seen_player_position: Vector3
 @onready var health := max_health
 
 func _ready() -> void:
-	# Ajuste o tamanho da área de visão para o valor exportado
 	vision_area_collision_shape.shape.radius = vision_range
+	pick_patrol_velocity()
 	if animation_player:
 		animation_player.animation_finished.connect(animation_finished)
 
 func animation_finished(_anim_name: String) -> void:
 	if state == States.Hurt:
 		set_state(States.Chase)
-	if state == States.Attack:
-		set_state(States.Chase)
 
 func _physics_process(_delta: float) -> void:
-	if state == States.Chase:
+	if state == States.Patrol:
+		patrol_loop()
+	elif state == States.Chase:
 		chase_loop()
-	elif state == States.Search:
-		search_loop()
-	elif state == States.Attack:
-		attack_loop()
-	# Os estados Hurt e Dead não precisam de loop, pois a animação cuida do fluxo.
 
-func chase_loop() -> void:
-	if not can_see_player():
-		last_seen_player_position = player.global_position
-		set_state(States.Search)
+func patrol_loop() -> void:
+	if can_see_player():
+		set_state(States.Chase)
 		return
 	
 	look_forward()
-	
-	if global_position.distance_to(player.global_position) <= attack_distance:
-		set_state(States.Attack)
+	apply_gravity()
+	move_and_slide()
+
+func chase_loop() -> void:
+	if not can_see_player():
+		set_state(States.Patrol)
 		return
 	
+	look_forward()
 	nav_agent.target_position = player.global_position
 	var direction := global_position.direction_to(nav_agent.get_next_path_position())
 	direction.y = 0
 	velocity.x = direction.normalized().x * chase_speed
 	velocity.z = direction.normalized().z * chase_speed
 	apply_gravity()
-	move_and_slide()
-
-func search_loop() -> void:
-	apply_gravity()
-	if can_see_player():
-		set_state(States.Chase)
-		return
-	
-	look_forward()
-	
-	nav_agent.target_position = last_seen_player_position
-	var direction := global_position.direction_to(nav_agent.get_next_path_position())
-	direction.y = 0
-	velocity.x = direction.normalized().x * chase_speed
-	velocity.z = direction.normalized().z * chase_speed
-	
-	if global_position.distance_to(last_seen_player_position) < 1.0:
-		set_state(States.Chase)
-	
-	move_and_slide()
-
-func attack_loop() -> void:
-	var direction := global_position.direction_to(player.global_position)
-	rotation.y = lerp_angle(rotation.y, atan2(direction.x, direction.z) + PI, turn_speed_weight)
-	
-	if global_position.distance_to(player.global_position) > attack_distance and not can_see_player():
-		last_seen_player_position = player.global_position
-		set_state(States.Search)
-		return
-	
 	move_and_slide()
 
 func apply_gravity() -> void:
@@ -119,9 +90,9 @@ func look_forward() -> void:
 	if velocity.length_squared() > 0.01:
 		rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z) + PI, turn_speed_weight)
 
-func attack() -> void:
-	if player in attack_hit_area.get_overlapping_bodies():
-		EventSystem.PLA_change_health.emit(-damage)
+func pick_patrol_velocity() -> void:
+	var direction := Vector2(0, -1).rotated(randf() * PI * 2)
+	velocity = Vector3(direction.x, 0, direction.y) * normal_speed
 
 func take_hit(arrow_item_resource : ArrowItemResource) -> void:
 	health -= arrow_item_resource.arrow_damage
@@ -134,22 +105,19 @@ func take_hit(arrow_item_resource : ArrowItemResource) -> void:
 func set_state(new_state : States) -> void:
 	if state == new_state:
 		return
-	
 	state = new_state
 	match state:
-		States.Search:
-			search_timer.start(randf_range(min_search_time, max_search_time))
-			#animation_player.play("Search")
+		States.Patrol:
+			pick_patrol_velocity()
+			patrol_timer.start(randf_range(min_patrol_time, max_patrol_time))
 		States.Hurt:
-			search_timer.stop()
-			animation_player.play("HitReact", ANIM_BLEND)
+			patrol_timer.stop()
+			#animation_player.play("HitReact", ANIM_BLEND)
 		States.Chase:
-			search_timer.stop()
+			patrol_timer.stop()
 			#animation_player.play("Gallop")
-		States.Attack:
-			animation_player.play("Attack", ANIM_BLEND)
 		States.Dead:
-			queue_free() # ou tocar animação de morte, etc.
+			queue_free() 
 
 func player_in_fov() -> bool:
 	if not player:
@@ -182,3 +150,7 @@ func _on_vision_area_body_entered(body: Node3D) -> void:
 func _on_vision_area_body_exited(body: Node3D) -> void:
 	if body == player:
 		player_in_vision_range = false
+
+func _on_patrol_timer_timeout() -> void:
+	pick_patrol_velocity()
+	patrol_timer.start(randf_range(min_patrol_time, max_patrol_time))

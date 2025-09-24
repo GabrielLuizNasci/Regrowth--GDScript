@@ -175,7 +175,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06118, 0)
 shape = SubResource("CapsuleShape3D_aqfrx")
 
 [node name="EyesMarker" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73551, -0.346301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73551, -0.439899)
 
 [node name="AttackHitArea" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32815, 0)
@@ -196,7 +196,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_yok30")
 [node name="OmniLight3D" type="OmniLight3D" parent="fire_enemy/FireEnemy" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.17791, -1.33823)
 light_color = Color(1, 0.796078, 0.443137, 1)
-light_energy = 1.23225
+light_energy = 1.3337
 light_size = 0.3
 omni_range = 11.8402
 script = ExtResource("2_1jvqe")
