@@ -50,7 +50,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k6d8t")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yok30"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6n0w"]
+albedo_color = Color(1, 0.254902, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pvrf"]
 transparency = 1
@@ -191,12 +192,12 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.73729, -0.232083)
 transform = Transform3D(-0.5, 0, -1.26759e-06, 0, 0.5, 0, 1.26759e-06, 0, -0.5, 0, 0.056, -0.18)
 mesh = SubResource("ArrayMesh_bhnq3")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_yok30")
+surface_material_override/0 = SubResource("StandardMaterial3D_f6n0w")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="fire_enemy/FireEnemy" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.17791, -1.33823)
 light_color = Color(1, 0.796078, 0.443137, 1)
-light_energy = 1.3337
+light_energy = 1.53952
 light_size = 0.3
 omni_range = 11.8402
 script = ExtResource("2_1jvqe")

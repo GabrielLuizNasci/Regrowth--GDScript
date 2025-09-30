@@ -11,6 +11,8 @@ height = 14.8381
 
 [node name="Snake" type="CharacterBody3D"]
 script = ExtResource("1_psivi")
+normal_speed = 20.0
+chase_speed = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -29,6 +31,10 @@ unique_name_in_owner = true
 one_shot = true
 
 [node name="PatrolTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="TurnTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 one_shot = true
 

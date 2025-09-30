@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://creivyxyox5ik"]
+[gd_scene load_steps=17 format=3 uid="uid://creivyxyox5ik"]
 
 [ext_resource type="Script" path="res://stages/stage.gd" id="1_x1sm2"]
 [ext_resource type="PackedScene" uid="uid://cm11d0nijrjoc" path="res://actors/player/player.tscn" id="2_p75f5"]
 [ext_resource type="PackedScene" uid="uid://bx1y7xtfcupme" path="res://actors/bosses/boitata/snake_head/snake_head.tscn" id="3_vgp50"]
+[ext_resource type="Texture2D" path="res://assets/textures/burned_ground_alb_ht.dds" id="4_agxu0"]
+[ext_resource type="Texture2D" uid="uid://cqgg77lbbdt00" path="res://assets/textures/burned_ground_norm_rough.png" id="5_askvx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0qugm"]
 sky_top_color = Color(0.293509, 0.352673, 0.434967, 1)
@@ -19,14 +21,64 @@ sky = SubResource("Sky_olql2")
 ambient_light_color = Color(0.197937, 0.197937, 0.197937, 1)
 ambient_light_sky_contribution = 0.5
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_6ofdr"]
-vertices = PackedVector3Array(-194.5, 3.5, 156, -193.25, 3.5, 158.25, -179.25, 3.5, 173.25, 156, 3.5, 194.5, 158.25, 3.5, 193.25, 173.25, 3.5, 179.25, 194.5, 3.5, -156, 193.25, 3.5, -158.25, 179.25, 3.5, -173.25, -156, 3.5, -194.5, -158.25, 3.5, -193.25, -173.25, 3.5, -179.25, -177, 3.5, 176.25, -158.25, 3.5, 193.25, -156, 3.5, 194.5, 176.25, 3.5, 177, 193.25, 3.5, 158.25, 194.5, 3.5, 156, 177, 3.5, -176.25, 158.25, 3.5, -193.25, 156, 3.5, -194.5, -176.25, 3.5, -177, -193.25, 3.5, -158.25, -194.5, 3.5, -156, -210.75, 3.5, 133, -208, 3.5, 138.25, 133, 3.5, 210.75, 138.25, 3.5, 208, 210.75, 3.5, -133, 208, 3.5, -138.25, -133, 3.5, -210.75, -138.25, 3.5, -208, -249.5, 3.5, -5, -249.5, 3.5, 5, -248.5, 3.5, 24.75, -24.75, 3.5, 248.5, -5, 3.5, 249.5, 5, 3.5, 249.5, -49.5, 3.5, 244.75, 248.5, 3.5, 24.75, 249.5, 3.5, 5, 249.5, 3.5, -5, 248.5, 3.5, -24.75, 245, 3.5, -48.25, 244.75, 3.5, 49.5, 24.75, 3.5, -248.5, 5, 3.5, -249.5, -5, 3.5, -249.5, 49.5, 3.5, -244.75, -48.25, 3.5, -245, -95.5, 3.5, -230.75, -230.75, 3.5, -95.5, -244.75, 3.5, -49.5, 230.75, 3.5, 95.5, 48.25, 3.5, 245, 95.5, 3.5, 230.75, -239, 3.5, 72.5, -230.75, 3.5, 95.5, -220.25, 3.5, 117.75, 117.75, 3.5, 220.25, 230.75, 3.5, -95.5, 220.25, 3.5, -117.75, 239, 3.5, -72.5, -117.75, 3.5, -220.25, 24.75, 3.5, 248.5, 117.75, 3.5, -220.25, 95.5, 3.5, -230.75, -24.75, 3.5, -248.5, -248.5, 3.5, -24.75, -139, 3.5, 207.5, -117.75, 3.5, 220.25, 207.5, 3.5, 139, 220.25, 3.5, 117.75, 139, 3.5, -207.5, -207.5, 3.5, -139, -220.25, 3.5, -117.75, -95.5, 3.5, 230.75, -72.5, 3.5, 239, 239, 3.5, 72.5, 72.5, 3.5, -239, -239, 3.5, -72.5, -245, 3.5, 48.25, 72.5, 3.5, 239, -72.5, 3.5, -239)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 2), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 5), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 8), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 11), PackedInt32Array(25, 24, 0), PackedInt32Array(0, 24, 2), PackedInt32Array(27, 26, 3), PackedInt32Array(3, 26, 5), PackedInt32Array(5, 26, 17), PackedInt32Array(29, 28, 6), PackedInt32Array(6, 28, 8), PackedInt32Array(8, 28, 20), PackedInt32Array(31, 30, 9), PackedInt32Array(9, 30, 11), PackedInt32Array(11, 30, 23), PackedInt32Array(32, 34, 33), PackedInt32Array(36, 35, 37), PackedInt32Array(37, 35, 38), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 42), PackedInt32Array(42, 39, 43), PackedInt32Array(43, 39, 44), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(50, 49, 30), PackedInt32Array(30, 49, 23), PackedInt32Array(23, 49, 51), PackedInt32Array(51, 49, 52), PackedInt32Array(53, 17, 44), PackedInt32Array(44, 17, 43), PackedInt32Array(43, 17, 28), PackedInt32Array(28, 17, 20), PackedInt32Array(55, 54, 26), PackedInt32Array(26, 54, 37), PackedInt32Array(26, 37, 38), PackedInt32Array(26, 38, 17), PackedInt32Array(57, 56, 24), PackedInt32Array(24, 56, 34), PackedInt32Array(24, 34, 32), PackedInt32Array(24, 32, 52), PackedInt32Array(24, 58, 57), PackedInt32Array(26, 59, 55), PackedInt32Array(61, 60, 28), PackedInt32Array(28, 60, 62), PackedInt32Array(28, 62, 43), PackedInt32Array(30, 63, 50), PackedInt32Array(54, 64, 37), PackedInt32Array(65, 20, 66), PackedInt32Array(66, 20, 48), PackedInt32Array(48, 20, 47), PackedInt32Array(47, 20, 49), PackedInt32Array(49, 67, 47), PackedInt32Array(32, 68, 52), PackedInt32Array(70, 69, 14), PackedInt32Array(71, 17, 72), PackedInt32Array(72, 17, 53), PackedInt32Array(65, 73, 20), PackedInt32Array(74, 23, 75), PackedInt32Array(75, 23, 51), PackedInt32Array(38, 77, 76), PackedInt32Array(44, 78, 53), PackedInt32Array(48, 79, 66), PackedInt32Array(52, 80, 51), PackedInt32Array(56, 81, 34), PackedInt32Array(55, 82, 54), PackedInt32Array(24, 52, 38), PackedInt32Array(38, 52, 17), PackedInt32Array(17, 52, 49), PackedInt32Array(17, 49, 20), PackedInt32Array(50, 83, 49), PackedInt32Array(70, 14, 76), PackedInt32Array(76, 14, 2), PackedInt32Array(76, 2, 38), PackedInt32Array(38, 2, 24)]
+[sub_resource type="Gradient" id="Gradient_q0fgt"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ujkqb"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vudh8"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_2ul44"]
-height = 0.0121406
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g8n3o"]
+seamless = true
+color_ramp = SubResource("Gradient_q0fgt")
+noise = SubResource("FastNoiseLite_vudh8")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_83qqa"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"macro_variation1": Color(1, 1, 1, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.0,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_g8n3o"),
+"vertex_normals_distance": 128.0
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_paxor"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 85.0
+distance_fade_max_distance = 75.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_8rpxn"]
+material_override = SubResource("StandardMaterial3D_paxor")
+generated_type = 1
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_3bsyp"]
+name = "burned_ground_alb_ht"
+albedo_texture = ExtResource("4_agxu0")
+normal_texture = ExtResource("5_askvx")
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_b2i7f"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_8rpxn")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_3bsyp")])
 
 [node name="SnakeLair" type="Node"]
 script = ExtResource("1_x1sm2")
@@ -40,15 +92,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.92, 4.65188, 174.565)
 [node name="Snake" parent="." instance=ExtResource("3_vgp50")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.013, 4.67199, 167.404)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_6ofdr")
-
-[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
-transform = Transform3D(500, 0, 0, 0, 3, 0, 0, 0, 500, 0, 0, 0)
-mesh = SubResource("CylinderMesh_ujkqb")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
-shape = SubResource("CylinderShape3D_2ul44")
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://data/snake_lair"
+material = SubResource("Terrain3DMaterial_83qqa")
+assets = SubResource("Terrain3DAssets_b2i7f")
+top_level = true
+metadata/_edit_lock_ = true

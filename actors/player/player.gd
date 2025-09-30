@@ -22,6 +22,17 @@ var is_sprinting := false
 var can_shoot := true
 
 func _enter_tree() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	EventSystem.PLA_freeze_player.connect(set_freeze.bind(true))
+	EventSystem.PLA_unfreeze_player.connect(set_freeze.bind(false))
+
+func set_freeze(freeze: bool) -> void:
+	set_process(!freeze)
+	set_physics_process(!freeze)
+	set_process_input(!freeze)
+	set_process_unhandled_key_input(!freeze)
+
+func _ready() -> void:
 	EventSystem.HUD_show_hud.emit()
 
 func _exit_tree() -> void:
@@ -85,7 +96,7 @@ func get_camera_relative_input() -> Vector3:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.PauseMenu)
 	
 	if event.is_action_pressed("summon"):
 		bow.visible = !bow.visible

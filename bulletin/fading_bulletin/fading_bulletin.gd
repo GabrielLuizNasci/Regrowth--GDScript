@@ -1,5 +1,4 @@
 extends Bulletin
-
 class_name FadingBulletin
 
 const TRANSPARENT_COLOR = Color(0, 0, 0, 0)
@@ -17,7 +16,6 @@ func _ready() -> void:
 
 func fade_in() -> void:
 	create_tween().tween_property(background, "color", BG_NORMAL_COLOR, BG_FADE_TIME)
-	
 
 func fade_out() -> void:
 	var tween := create_tween()

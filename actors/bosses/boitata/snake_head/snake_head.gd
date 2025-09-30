@@ -18,6 +18,7 @@ var state := States.Patrol
 @onready var agressive_timer: Timer = %AgressiveTimer
 @onready var disappear_after_death_timer: Timer = %DisappearAfterDeathTimer
 @onready var patrol_timer: Timer = %PatrolTimer
+@onready var turn_timer: Timer = %TurnTimer
 
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("Player")
 @onready var nav_agent = $NavigationAgent3D
@@ -33,6 +34,8 @@ var state := States.Patrol
 @export var turn_speed_weight := 0.1
 @export var min_patrol_time := 2.0
 @export var max_patrol_time := 4.0
+@export var min_turn_time := 1.5
+@export var max_turn_time := 5.0
 @export var attack_distance = 2.0
 @export var damage := 20.0
 @export var vision_range := 15.0
@@ -44,6 +47,7 @@ var player_in_vision_range := false
 func _ready() -> void:
 	vision_area_collision_shape.shape.radius = vision_range
 	pick_patrol_velocity()
+	
 	if animation_player:
 		animation_player.animation_finished.connect(animation_finished)
 
