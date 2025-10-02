@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://to8re17teim"]
+[gd_scene load_steps=27 format=3 uid="uid://yddckkeh3ag2"]
 
 [ext_resource type="Script" path="res://stages/stage.gd" id="1_88ynj"]
 [ext_resource type="Terrain3DMaterial" uid="uid://cwcdtcsankxmi" path="res://data/main_game_material.tres" id="1_bxme1"]
@@ -15,10 +15,11 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="13_2fjw0"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="14_pjtch"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="15_3y07r"]
+[ext_resource type="PackedScene" uid="uid://cqxr5tx1fsxhd" path="res://objects/static_objects/boss_gate/snake_gate/snake_gate.tscn" id="16_djb11"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2gb3i"]
 
-[sub_resource type="Resource" id="Resource_m2osf"]
+[sub_resource type="Resource" id="Resource_w4pxp"]
 script = ExtResource("9_d0pge")
 amount = 300
 enabled = true
@@ -27,7 +28,7 @@ custom_seed = 1
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_qu0e1"]
+[sub_resource type="Resource" id="Resource_jk18b"]
 script = ExtResource("12_cpike")
 rotation = Vector3(0, 360, 0)
 snap_angle = Vector3(0, 0, 0)
@@ -37,7 +38,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_tp7s0"]
+[sub_resource type="Resource" id="Resource_65db2"]
 script = ExtResource("12_p2xnn")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 1.5
@@ -53,7 +54,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_enwr8"]
+[sub_resource type="Resource" id="Resource_dj872"]
 script = ExtResource("11_0u8qu")
 iterations = 3
 offset_step = 0.5
@@ -65,9 +66,9 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_l80n5"]
+[sub_resource type="Resource" id="Resource_xj2la"]
 script = ExtResource("7_6mnyx")
-stack = Array[ExtResource("8_0ycm1")]([SubResource("Resource_m2osf"), SubResource("Resource_qu0e1"), SubResource("Resource_tp7s0"), SubResource("Resource_enwr8")])
+stack = Array[ExtResource("8_0ycm1")]([SubResource("Resource_w4pxp"), SubResource("Resource_jk18b"), SubResource("Resource_65db2"), SubResource("Resource_dj872")])
 
 [sub_resource type="Resource" id="Resource_rgwgw"]
 script = ExtResource("15_3y07r")
@@ -76,6 +77,7 @@ size = Vector3(400, 1, 300)
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vgyjn"]
 sky_top_color = Color(0.293509, 0.352673, 0.434967, 1)
 sky_horizon_color = Color(0.79902, 0.80541, 0.815501, 1)
+sky_cover_modulate = Color(0.336608, 0.336608, 0.336608, 1)
 ground_bottom_color = Color(0.137947, 0.114357, 0.0869545, 1)
 ground_horizon_color = Color(0.816503, 0.822407, 0.831731, 1)
 
@@ -87,6 +89,12 @@ background_mode = 2
 sky = SubResource("Sky_4lsad")
 ambient_light_color = Color(0.197937, 0.197937, 0.197937, 1)
 ambient_light_sky_contribution = 0.5
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.22431, 0.246636, 0.281735, 1)
+fog_light_energy = 0.5
+fog_density = 0.6
+fog_depth_curve = 0.258816
 
 [node name="BurnedForest" type="Node" node_paths=PackedStringArray("scatter_nodes")]
 script = ExtResource("1_88ynj")
@@ -97,6 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.4876, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 163, 0)
+light_color = Color(0.882353, 0.447059, 0.447059, 1)
 
 [node name="FireEnemy" parent="." instance=ExtResource("4_2rycl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 6.12683, 0)
@@ -111,12 +120,13 @@ material = ExtResource("1_bxme1")
 assets = ExtResource("2_78rvq")
 collision_mask = 0
 top_level = true
+metadata/_edit_lock_ = true
 
 [node name="ScatterTrees" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25629, 6.1272, -1.26721)
 script = ExtResource("6_riey7")
 render_mode = 1
-modifier_stack = SubResource("Resource_l80n5")
+modifier_stack = SubResource("Resource_xj2la")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -126,8 +136,12 @@ path = "res://objects/static_objects/static_tree.tscn"
 
 [node name="ScatterShape" type="Node3D" parent="NavigationRegion3D/ScatterTrees"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -4.67523, 0, 21.998)
+visible = false
 script = ExtResource("14_pjtch")
 shape = SubResource("Resource_rgwgw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_l0wnu")
+
+[node name="SnakeGate" parent="." instance=ExtResource("16_djb11")]
+transform = Transform3D(0.673736, 0, 4.9544, 0, 5, 0, -4.9544, 0, 0.673736, 161.845, 40.5596, 193.919)

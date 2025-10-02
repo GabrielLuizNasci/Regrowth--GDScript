@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://dvojsttqxtayx"]
+[gd_scene load_steps=5 format=3 uid="uid://dvojsttqxtayx"]
+
+[ext_resource type="Script" path="res://actors/bosses/boitata/snake_segment/snake_segment.gd" id="1_iy71i"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uh0mu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sbwgu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ao1eh"]
 
 [node name="SnakeSegment" type="CharacterBody3D"]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 0, 0)
+script = ExtResource("1_iy71i")
+follow_distance = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997773, -4.3614e-08)
+mesh = SubResource("CapsuleMesh_uh0mu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997773, -4.3614e-08)
+shape = SubResource("CapsuleShape3D_sbwgu")
+
+[node name="ColisionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997773, -4.3614e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColisionArea"]
+shape = SubResource("CapsuleShape3D_ao1eh")
+
+[connection signal="body_entered" from="ColisionArea" to="." method="_on_colision_area_body_entered"]

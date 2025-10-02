@@ -90,7 +90,7 @@ environment = SubResource("Environment_t36dv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.92, 4.65188, 174.565)
 
 [node name="Snake" parent="." instance=ExtResource("3_vgp50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.013, 4.67199, 167.404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.168, 4.67199, 139.144)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 data_directory = "res://data/snake_lair"
