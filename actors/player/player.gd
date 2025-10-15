@@ -15,11 +15,13 @@ extends CharacterBody3D
 @onready var body: MeshInstance3D = %Body
 @onready var player_stats_manager: Node = $Managers/PlayerStatsManager
 @onready var bow_cooldown_timer: Timer = %BowCooldownTimer
+@onready var interaction_raycast: RayCast3D = $CameraManager/InteractionRayCast
 
 var last_movement_dir := Vector3.BACK
 var is_grounded := true
 var is_sprinting := false
 var can_shoot := true
+var can_jump := true
 
 func _enter_tree() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -38,7 +40,16 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	EventSystem.HUD_hide_hud.emit()
 
+func _process(_delta: float) -> void:
+	interaction_raycast.check_interaction()
+	
+	if jump_count <= max_jump:
+		can_jump = true
+	else:
+		can_jump = false
+
 func _physics_process(delta: float) -> void:
+	
 	move()
 	
 	if(Input.is_action_just_pressed("attack")):
@@ -51,7 +62,7 @@ func _physics_process(delta: float) -> void:
 func move() -> void:
 	var direction: Vector3 = get_camera_relative_input()
 	
-	if Input.is_action_just_pressed("jump") and jump_count <= max_jump:
+	if Input.is_action_just_pressed("jump") and can_jump:
 		if player_stats_manager.current_energy >= stamina_cost_per_jump:
 			velocity.y = jump_speed
 			EventSystem.PLA_change_energy.emit(-stamina_cost_per_jump)
@@ -98,9 +109,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.PauseMenu)
 	
-	if event.is_action_pressed("summon"):
-		bow.visible = !bow.visible
-	
 	if event.is_action_pressed("arrow_element_up"):
 		EventSystem.BOW_change_element.emit(ItemConfig.Keys.WindArrow)
 	elif event.is_action_pressed("arrow_element_left"):
@@ -116,8 +124,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		else:
 			print("Nenhum inimigo encontrado para travar.")
 	
-	if event.is_action_released("ui_accept"):
-		velocity.y = 0
 
 func _on_bow_cooldown_timer_timeout() -> void:
 	can_shoot = true

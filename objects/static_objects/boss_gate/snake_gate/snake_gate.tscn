@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" path="res://objects/static_objects/boss_gate/snake_gate/snake_gate.gd" id="1_q1t4f"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5dcsk"]
-size = Vector3(2.99292, 2.96829, 0.483368)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52uqm"]
 albedo_color = Color(0.992157, 0.717647, 0, 1)
 
@@ -12,22 +9,28 @@ albedo_color = Color(0.992157, 0.717647, 0, 1)
 material = SubResource("StandardMaterial3D_52uqm")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xpafs"]
-size = Vector3(2.96411, 2.97223, 0.491943)
+size = Vector3(2.96411, 2.91666, 0.491943)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5dcsk"]
+size = Vector3(2.99292, 2.96829, 0.483368)
 
 [node name="SnakeGate" type="StaticBody3D"]
-
-[node name="Interactable" type="Area3D" parent="."]
-script = ExtResource("1_q1t4f")
-prompt = "Enfrentar Boitatá"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00402832, -0.00843811, -0.00834656)
-shape = SubResource("BoxShape3D_5dcsk")
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_qaoi5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00280762, 0.0618591, -0.00427246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00280762, 0.0340726, -0.00427246)
 shape = SubResource("BoxShape3D_xpafs")
+
+[node name="Interactable" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_q1t4f")
+prompt = "Enfrentar Boitatá"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00402832, -0.00843811, -0.00834656)
+shape = SubResource("BoxShape3D_5dcsk")

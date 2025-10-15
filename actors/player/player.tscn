@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cm11d0nijrjoc"]
+[gd_scene load_steps=13 format=3 uid="uid://cm11d0nijrjoc"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_31l8j"]
 [ext_resource type="Script" path="res://actors/player/camera_manager.gd" id="2_lctxg"]
 [ext_resource type="PackedScene" uid="uid://bw6ganhdmf1sm" path="res://items/bow/bow.tscn" id="3_0qqna"]
 [ext_resource type="Script" path="res://actors/player/camera.gd" id="3_yt3qb"]
+[ext_resource type="Script" path="res://actors/player/interaction_raycast.gd" id="4_1jeia"]
 [ext_resource type="Script" path="res://items/bow/bow_manager.gd" id="4_xmqc8"]
 [ext_resource type="Script" path="res://game/managers/player_stats_manager.gd" id="6_imfdu"]
 
@@ -47,6 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 
 target_position = Vector3(0, -1, -2)
 collision_mask = 4
 collide_with_areas = true
+script = ExtResource("4_1jeia")
 
 [node name="BowManager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.111)

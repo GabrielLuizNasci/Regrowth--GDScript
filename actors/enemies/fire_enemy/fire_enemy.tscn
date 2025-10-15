@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://game/flickering_light.gd" id="2_1jvqe"]
 [ext_resource type="Script" path="res://actors/enemies/fire_enemy/fire_enemy.gd" id="2_fgkpb"]
 [ext_resource type="Texture2D" uid="uid://hpp2wohw5nbx" path="res://assets/2d_textures/circle32.png" id="3_6dxod"]
-[ext_resource type="Material" uid="uid://dxd6cxgi4g0dw" path="res://resources/particle_resources/fire_particles.tres" id="3_8j30r"]
+[ext_resource type="Material" uid="uid://1nj3fhwekas0" path="res://resources/particle_resources/fire_enemy_particles.tres" id="4_j4i21"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_odln0"]
 height = 1.39487
@@ -53,7 +53,7 @@ shadow_mesh = SubResource("ArrayMesh_k6d8t")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6n0w"]
 albedo_color = Color(1, 0.254902, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pvrf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0j0u"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -65,7 +65,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_nv0iy"]
-material = SubResource("StandardMaterial3D_8pvrf")
+material = SubResource("StandardMaterial3D_s0j0u")
 size = Vector2(0.05, 0.05)
 
 [sub_resource type="Animation" id="Animation_jchmr"]
@@ -197,7 +197,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f6n0w")
 [node name="OmniLight3D" type="OmniLight3D" parent="fire_enemy/FireEnemy" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.17791, -1.33823)
 light_color = Color(1, 0.796078, 0.443137, 1)
-light_energy = 1.2572
+light_energy = 1.82969
 light_size = 0.3
 omni_range = 11.8402
 script = ExtResource("2_1jvqe")
@@ -206,7 +206,7 @@ script = ExtResource("2_1jvqe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.68971, -1.28086)
 amount = 64
 lifetime = 0.5
-process_material = ExtResource("3_8j30r")
+process_material = ExtResource("4_j4i21")
 draw_pass_1 = SubResource("QuadMesh_nv0iy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="fire_enemy" index="1"]

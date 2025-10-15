@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx1y7xtfcupme"]
+[gd_scene load_steps=5 format=3 uid="uid://bx1y7xtfcupme"]
 
 [ext_resource type="Script" path="res://actors/bosses/boitata/snake_head/snake_head.gd" id="1_psivi"]
 [ext_resource type="PackedScene" uid="uid://b1as66j8fowik" path="res://assets/meshes/boitata/snake_head.blend" id="2_tu8rk"]
-[ext_resource type="PackedScene" uid="uid://dvojsttqxtayx" path="res://actors/bosses/boitata/snake_segment/snake_segment.tscn" id="3_5kq23"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7ixf6"]
 radius = 2.33577
@@ -58,13 +57,9 @@ transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 
 [node name="Segments" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.66086)
 
-[node name="SnakeSegment" parent="Segments" node_paths=PackedStringArray("target_node") instance=ExtResource("3_5kq23")]
-transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 0, 0.444821)
-target_node = NodePath("../..")
-
-[node name="SnakeSegment2" parent="Segments" node_paths=PackedStringArray("target_node") instance=ExtResource("3_5kq23")]
-transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 0, 9.1342)
-target_node = NodePath("../SnakeSegment")
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.1625)
+spring_length = 3.0
 
 [connection signal="timeout" from="Timers/PatrolTimer" to="." method="_on_patrol_timer_timeout"]
 [connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
