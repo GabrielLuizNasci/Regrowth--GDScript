@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://stages/main_menu/main_menu.gd" id="1_mv37d"]
 [ext_resource type="Terrain3DMaterial" uid="uid://cwcdtcsankxmi" path="res://data/main_game_material.tres" id="2_ltqku"]
 [ext_resource type="Theme" uid="uid://cxipnqh0uuh32" path="res://resources/default_ui_theme.tres" id="2_p18kr"]
-[ext_resource type="Terrain3DAssets" uid="uid://fpxd33glqc0w" path="res://data/main_game_assets.tres" id="3_cj0px"]
+[ext_resource type="Terrain3DAssets" uid="uid://yjkhdq00wxby" path="res://data/main_game_assets.tres" id="3_cj0px"]
 [ext_resource type="Script" path="res://game/shaking_camera.gd" id="4_jc4c1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ymykr"]
@@ -64,6 +64,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
+
+[node name="Label" type="Label" parent="MainMenuUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Regrowth"
 
 [node name="StartButton" type="Button" parent="MainMenuUI/VBoxContainer"]
 layout_mode = 2

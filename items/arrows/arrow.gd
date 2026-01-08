@@ -1,5 +1,4 @@
 extends CharacterBody3D
-
 class_name Arrow
 
 @export var arrow_resource: ArrowItemResource
@@ -32,5 +31,5 @@ func _physics_process(delta: float) -> void:
 		if collider.has_method("take_hit"):
 			collider.take_hit(arrow_resource)
 		
-		queue_free() # Destrói a flecha após colidir
+		queue_free() 
 		return

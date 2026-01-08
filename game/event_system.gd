@@ -1,5 +1,4 @@
 extends Node
-
 #Sinais para controle de estágios
 signal STA_change_stage
 
@@ -20,7 +19,6 @@ signal EQU_change_equippable_weapon
 #Sinais para Jogador
 signal PLA_freeze_player
 signal PLA_unfreeze_player
-
 signal PLA_change_energy
 signal PLA_energy_updated
 signal PLA_energy_increased

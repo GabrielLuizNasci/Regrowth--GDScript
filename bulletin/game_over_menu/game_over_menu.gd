@@ -24,6 +24,7 @@ func fade_in() -> void:
 
 func _on_restart_button_pressed() -> void:
 	EventSystem.STA_change_stage.emit(StageConfig.Keys.BurnedForest)
+	EventSystem.PLA_change_health.emit(100.0)
 
 func _on_main_menu_button_pressed() -> void:
 	EventSystem.STA_change_stage.emit(StageConfig.Keys.MainMenu)

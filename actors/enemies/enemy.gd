@@ -137,7 +137,8 @@ func apply_gravity() -> void:
 		velocity.y = 0
 
 func look_forward() -> void:
-	rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z) + PI, turn_speed_weight)
+	rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z) + PI,\
+							turn_speed_weight)
 
 func attack() -> void:
 	if player in attack_hit_area.get_overlapping_bodies():

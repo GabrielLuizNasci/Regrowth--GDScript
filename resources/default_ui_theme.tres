@@ -38,3 +38,5 @@ Button/styles/normal = SubResource("StyleBoxEmpty_tohy8")
 Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_jmo2n")
 Button/styles/pressed = SubResource("StyleBoxEmpty_sg5cc")
 Button/styles/pressed_mirrored = SubResource("StyleBoxEmpty_tmp4i")
+Label/colors/font_color = Color(0.236462, 0.425921, 0.256703, 1)
+Label/font_sizes/font_size = 64
